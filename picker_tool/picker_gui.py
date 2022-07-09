@@ -89,7 +89,6 @@ class PickerWindow(QtWidgets.QMainWindow):
         # Mirror Dialog holds the mirror settings.
         self.mirror_settings = MirrorSettingsDialog(self)
 
-
     def init_gui(self):
         """
         Creates the GUI and shows the GUI to the user.
@@ -136,6 +135,10 @@ class PickerWindow(QtWidgets.QMainWindow):
         self.curr_scene.views()[0].centerOn(0.0, 0.0)
         preview_prev_center = self.get_center(self.pp_item)
         self.pick_prvw_view.centerOn(preview_prev_center)
+        
+        # Hide the settings if we're not showing the GUI with editing at first.
+        if self.edit_mode is False:
+            self.hide_settings()
 
     def create_menu_bar(self):
         """
